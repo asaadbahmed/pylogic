@@ -41,28 +41,9 @@ def run_tests():
     is_equal(0, LOGICAL_NOT(1), "LOGICAL_NOT (1 -> 0)")
     is_equal(1, LOGICAL_NOT(0), "LOGICAL_NOT (0 -> 1)")
     
-def main():
-    valid_symbols = set({'1', '0', '&', '+', '!', '^', '(', ')', ' '})
-    gates = [
-        {"symbol": "&",  "name": "AND", "desc": "A & B"},
-        {"symbol": "!&",  "name": "NAND", "desc": "!(A & B)"},
+# TODO - add expression evaluating & minimizing (convert to NANDS using DeMorgans for least possible transistors)
 
-        {"symbol": "+", "name": "OR", "desc": "A + B"},
-        {"symbol": "+", "name": "NOR", "desc": "!(A + B)"},
-
-        {"symbol": "^", "name": "XOR", "desc": "A ^ B"},
-        {"symbol": "^", "name": "XNOR", "desc": "!(A ^ B)"},
-
-        {"symbol": "!", "name": "NOT", "desc": "!A"},        
-    ]
-
-    operations = [
-        {"symbol": "ADD", "name": "ADD", "desc": "Adds two bits (4 bit signed)."}
-    ]
-
-    a = int(input("Input a 4 bit signed binary value: "), 2)
-    b = int(input("Input another 4 bit signed binary value: "), 2)
-
+def HANDLE_GATE(a, b, gates):
     print("Choose a logic gate. The not gate only applies to the first bit you input.\nGate\t\tSymbol\tDescription")
     for info in gates:
         print(f"{info["name"]}\t\t[{info["symbol"]}]\t{info["desc"]}")
@@ -85,9 +66,55 @@ def main():
             result = LOGICAL_XNOR(a, b)
         case "NOT" | "!":
             result = LOGICAL_NOT(a)
+        case _:
+            result = None
+            raise RuntimeError("Gate does not exist!")
             
     print("Gate Result: " + str(result))
-    print("Choose an operation.\nGate\t\tSymbol\tDescription")
+
+def HANDLE_TRUTH_TABLE():
+    print("Binary\tDecimal")
+    for i in range(8):
+        print(f"\t{i}")
+
+    for i in range(7, -1, -1):
+        print(f"\t-{i}")
+
+def HANDLE_OPERATION(a, b, ops):
+    print(123)
+
+def main():
+    valid_symbols = set({'1', '0', '&', '+', '!', '^', '(', ')', ' '})
+    gates = [
+        {"symbol": "&",  "name": "AND", "desc": "A & B"},
+        {"symbol": "!&",  "name": "NAND", "desc": "!(A & B)"},
+
+        {"symbol": "+", "name": "OR", "desc": "A + B"},
+        {"symbol": "+", "name": "NOR", "desc": "!(A + B)"},
+
+        {"symbol": "^", "name": "XOR", "desc": "A ^ B"},
+        {"symbol": "^", "name": "XNOR", "desc": "!(A ^ B)"},
+
+        {"symbol": "!", "name": "NOT", "desc": "!A"},        
+    ]
+
+    operations = [
+        {"symbol": "ADD", "name": "ADD", "desc": "Adds two bits (4 bit signed)."}
+    ]
+
+    a = int(input("Input a 4 bit signed binary value: "), 2)
+    b = int(input("Input another 4 bit signed binary value: "), 2)
+    choice = input("Would you like to run an operation, gate, or view the truth table? Type \"op\" or \"gate\" or \"tt\": ")
+    
+    match choice:
+        case "gate":
+            HANDLE_GATE(a, b, gates)
+        case "op":
+            HANDLE_OPERATION(a, b, operations)
+        case "tt":
+            HANDLE_TRUTH_TABLE()
+        case _:
+            raise RuntimeError("Invalid choice!")
     
 if RUN_TESTS:
     run_tests()
