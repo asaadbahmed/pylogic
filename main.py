@@ -67,19 +67,19 @@ def main():
     result = 0
 
     match choice:
-        case "AND":
+        case "AND" | "&":
             result = LOGICAL_AND(a, b)
-        case "NAND":
+        case "NAND" | "!&" :
             result = LOGICAL_NAND(a, b)
-        case "OR":
+        case "OR" | "+":
             result = LOGICAL_OR(a, b)
-        case "NOR":
+        case "NOR" | "!+":
             result = LOGICAL_NOR(a, b)
-        case "XOR":
+        case "XOR" | "^":
             result = LOGICAL_XOR(a, b)
-        case "XNOR":
+        case "XNOR" | "!^":
             result = LOGICAL_XNOR(a, b)
-        case "NOT":
+        case "NOT" | "!":
             result = LOGICAL_NOT(a)
             
     print("Result: " + str(result))
