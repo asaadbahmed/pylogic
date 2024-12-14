@@ -62,7 +62,6 @@ def HANDLE_OPERATION(a, b, ops):
     print(123)
 
 def main():
-    valid_symbols = set({'1', '0', '&', '+', '!', '^', '(', ')', ' '})
     gates = [
         {"symbol": "&",  "name": "AND", "desc": "A & B"},
         {"symbol": "!&",  "name": "NAND", "desc": "!(A & B)"},
