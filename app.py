@@ -44,6 +44,7 @@ def HANDLE_OPERATION(a, b, ops):
     print(123)
 
 def main():
+    """
     gates = [
         {"symbol": "&",  "name": "AND", "desc": "A & B"},
         {"symbol": "!&",  "name": "NAND", "desc": "!(A & B)"},
@@ -74,6 +75,18 @@ def main():
             HANDLE_TRUTH_TABLE()
         case _:
             raise RuntimeError("Invalid choice!")
+    """
     
+customtkinter.set_appearance_mode("Dark")
+customtkinter.set_default_color_theme("dark-blue")
 
-main()
+app = customtkinter.CTk()
+app.geometry("400x240")
+
+def button_function():
+    print("button pressed")
+
+button = customtkinter.CTkButton(master=app, text="CTkButton", command=button_function)
+button.place(relx=0.5, rely=0.5, anchor=customtkinter.CENTER)
+
+app.mainloop()
