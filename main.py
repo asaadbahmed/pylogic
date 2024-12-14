@@ -1,24 +1,4 @@
-def LOGICAL_AND(a, b):
-    return a & b
-
-def LOGICAL_OR(a, b):
-    return a | b
-
-def LOGICAL_XOR(a, b):
-    return a ^ b
-
-def LOGICAL_NAND(a, b):
-    return ~(a & b) & 1
-
-def LOGICAL_NOR(a, b):
-    return ~(a | b) & 1
-
-def LOGICAL_XNOR(a, b):
-    return ~(a ^ b) & 1
-
-def LOGICAL_NOT(a):
-    return 1 - a
-    
+import gates
 # TODO - add expression evaluating & minimizing (convert to NANDS using DeMorgans for least possible transistors)
 
 def HANDLE_GATE(a, b, gates):
@@ -31,19 +11,19 @@ def HANDLE_GATE(a, b, gates):
 
     match choice:
         case "AND" | "&":
-            result = LOGICAL_AND(a, b)
+            result = gates.LOGICAL_AND(a, b)
         case "NAND" | "!&" :
-            result = LOGICAL_NAND(a, b)
+            result = gates.LOGICAL_NAND(a, b)
         case "OR" | "+":
-            result = LOGICAL_OR(a, b)
+            result = gates.LOGICAL_OR(a, b)
         case "NOR" | "!+":
-            result = LOGICAL_NOR(a, b)
+            result = gates.LOGICAL_NOR(a, b)
         case "XOR" | "^":
-            result = LOGICAL_XOR(a, b)
+            result = gates.LOGICAL_XOR(a, b)
         case "XNOR" | "!^":
-            result = LOGICAL_XNOR(a, b)
+            result = gates.LOGICAL_XNOR(a, b)
         case "NOT" | "!":
-            result = LOGICAL_NOT(a)
+            result = gates.LOGICAL_NOT(a)
         case _:
             result = None
             raise RuntimeError("Gate does not exist!")
