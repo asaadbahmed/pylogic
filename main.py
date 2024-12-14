@@ -4,7 +4,6 @@ def LOGICAL_AND(a, b):
     return a & b
 
 def LOGICAL_XOR(a, b):
-    #if a == 1 and b == 0
     if a & (not b):
         return 1
     elif (not a) & b:
@@ -14,6 +13,15 @@ def LOGICAL_XOR(a, b):
 
 def LOGICAL_OR(a, b):
     return a | b
+
+def LOGICAL_NAND(a, b):
+    return not (a & b)
+
+def LOGICAL_NOR(a, b):
+    return not (a | b)
+
+def LOGICAL_XNOR(a, b):
+    return not LOGICAL_XOR(a, b)
 
 def LOGICAL_NOT(a):
     return abs(a - 1)
