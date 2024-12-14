@@ -1,4 +1,5 @@
-import customtkinter
+from tkinter import *
+from tkinter import ttk
 import gates
 
 # TODO - add expression evaluating & minimizing (convert to NANDS using DeMorgans for least possible transistors)
@@ -76,17 +77,10 @@ def main():
         case _:
             raise RuntimeError("Invalid choice!")
     """
-    
-customtkinter.set_appearance_mode("Dark")
-customtkinter.set_default_color_theme("dark-blue")
 
-app = customtkinter.CTk()
-app.geometry("400x240")
-
-def button_function():
-    print("button pressed")
-
-button = customtkinter.CTkButton(master=app, text="CTkButton", command=button_function)
-button.place(relx=0.5, rely=0.5, anchor=customtkinter.CENTER)
-
+app = Tk()
+app.title("Elmos world")
+app.size(1200, 800)
 app.mainloop()
+
+#1200x800
