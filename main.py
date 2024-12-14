@@ -56,8 +56,12 @@ def main():
         {"symbol": "!", "name": "NOT", "desc": "!A"},        
     ]
 
-    a = int(input("Input a bit: "), 2)
-    b = int(input("Input another bit: "), 2)
+    operations = [
+        {"symbol": "ADD", "name": "ADD", "desc": "Adds two bits (4 bit signed)."}
+    ]
+
+    a = int(input("Input a 4 bit signed binary value: "), 2)
+    b = int(input("Input another 4 bit signed binary value: "), 2)
 
     print("Choose a logic gate. The not gate only applies to the first bit you input.\nGate\t\tSymbol\tDescription")
     for info in gates:
@@ -82,7 +86,8 @@ def main():
         case "NOT" | "!":
             result = LOGICAL_NOT(a)
             
-    print("Result: " + str(result))
+    print("Gate Result: " + str(result))
+    print("Choose an operation.\nGate\t\tSymbol\tDescription")
     
 if RUN_TESTS:
     run_tests()
