@@ -1,5 +1,4 @@
-RUN_TESTS = False
-BINARY_VALUES = {0, 1}
+RUN_TESTS = True
 
 def LOGICAL_AND(a, b):
     return a == 1 and b == 1
@@ -21,25 +20,8 @@ def LOGICAL_NOT(a):
     elif a == 0:
         return 1
 
-def DECIMAL_TO_BINARY(value):
-    if value == 1 or value == 0: return value
-    
-    binary_values = []
-    while value != 0:
-        if value % 2 == 0:
-            binary_values.append(1)
-        else:
-            binary_values.append(0)
-        value = value // 2
-
-    # since in decimal -> binary conversion, you go from the least significant bit to the most significant bit
-    binary_values.reverse()
-    print(binary_values)
-
-    return binary_values
-
 def is_equal(expected, actual, test):
-    if (expected == actual):
+    if (expected == actual or expected is actual):
         print("Test passed: " + test)
     else:
         print("Test failed: " + test)
@@ -59,9 +41,6 @@ def run_tests():
     is_equal(1, LOGICAL_NOT(0), "LOGICAL_NOT (0 -> 1)")
     
 def main():
-    if RUN_TESTS:
-        run_tests()
-
     operations = [
         {"symbol": "&",  "name": "AND", "desc": "A & B"},
         {"symbol": "+", "name": "OR", "desc": "A + B"},
@@ -74,5 +53,7 @@ def main():
         print(f"{info["name"]}\t\t[{info["symbol"]}]\t{info["desc"]}")
     
 
-
-main()
+if RUN_TESTS:
+    run_tests()
+else:
+    main()
