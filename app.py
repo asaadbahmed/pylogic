@@ -42,14 +42,18 @@ def main():
         print("Invalid operation.")
         return 0
 
+    print("Feel free to separate the binary with underscores, as it is automatically removed. Here's an example: 1010_1010")
+
+    # TODO: Fix bug, repro inputs: and, 1_0, 0_1
+
     # since NOT only takes one parameter, we only prompt once
     inputs = []
     try:
         if op == "NOT":
-            inputs.append(int(input("Input a binary value: "), 2))
+            inputs.append(int(input("Input a binary value: ").replace("_", ""), 2))
         else:
-            inputs.append(int(input("Input a binary value: "), 2))
-            inputs.append(int(input("Input a binary value: "), 2))
+            inputs.append(int(input("Input a binary value: ").replace("_", ""), 2))
+            inputs.append(int(input("Input a binary value: ").replace("_", ""), 2))
     except:
         print("Did you provide binary values?")
         return 0
