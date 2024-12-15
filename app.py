@@ -1,5 +1,9 @@
 import operations
 
+# wrapper of the built-in bin function to get rid of the b0 prefix
+def binWithoutPrefix(integer):
+    return bin(integer)[2:]
+
 def main():
     # operations = ["AND (&)", "NAND (!&)", "OR (+)", "NOR (!+)", "XOR (^)", "XNOR (!^)", "NOT (!)", "ADD (++)", "SUB (--)", "MUL (**)", "DIV (//)"]
     symbols = set({"&", "!&", "+", "!+", "^", "!^", "!", "++", "--", "**", "//"})
@@ -54,10 +58,10 @@ def main():
     except:
         raise Exception("Something went wrong. Did you provide the correct number of arguments? If so, the issue may lie with the operator function itself.")
     else:        
-        expression = str(inputs[0]) # initialize the expression with the first input, so it doesn't have whitespace in the start
+        expression = binWithoutPrefix(inputs[0]) # initialize the expression with the first input, so it doesn't have whitespace in the start
         for i in inputs[1:]: # skip the first index since the expression is initialized with it
-            expression += " " + op + " " + str(i) # TODO: Convert i to binary
-        print(f"{expression} => {result}") # TODO: Convert result to binary
+            expression += " " + op + " " + binWithoutPrefix(i)
+        print(f"{expression} => {binWithoutPrefix(result)}")
     finally:
         print("Successfully executed.")
         return 0
