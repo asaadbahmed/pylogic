@@ -1,5 +1,3 @@
-RUN_TESTS = False
-
 def LOGICAL_AND(a, b):
     return a & b
 
@@ -20,27 +18,7 @@ def LOGICAL_XNOR(a, b):
 
 def LOGICAL_NOT(a):
     return 1 - a
-    
-def is_equal(expected, actual, test):
-    if (expected == actual or expected is actual):
-        print("Test passed: " + test)
-    else:
-        print("Test failed: " + test)
 
-def run_tests():
-    is_equal(1, LOGICAL_AND(1, 1), "LOGICAL_AND (both 1)")
-    is_equal(0, LOGICAL_AND(1, 0), "LOGICAL_AND (both 0)")
-    
-    is_equal(1, LOGICAL_OR(1, 0), "LOGICAL_OR (one is true)")
-    is_equal(0, LOGICAL_OR(0, 0), "LOGICAL_OR (both are false)")
-
-    is_equal(0, LOGICAL_XOR(1, 1), "LOGICAL_XOR (both are true)")
-    is_equal(0, LOGICAL_XOR(0, 0), "LOGICAL_XOR (both are false)")
-    is_equal(1, LOGICAL_XOR(1, 0), "LOGICAL_XOR (one is true)")
-
-    is_equal(0, LOGICAL_NOT(1), "LOGICAL_NOT (1 -> 0)")
-    is_equal(1, LOGICAL_NOT(0), "LOGICAL_NOT (0 -> 1)")
-    
 # TODO - add expression evaluating & minimizing (convert to NANDS using DeMorgans for least possible transistors)
 
 def HANDLE_GATE(a, b, gates):
@@ -116,7 +94,4 @@ def main():
         case _:
             raise RuntimeError("Invalid choice!")
     
-if RUN_TESTS:
-    run_tests()
-else:
-    main()
+main()
