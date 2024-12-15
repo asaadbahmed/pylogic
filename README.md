@@ -10,3 +10,5 @@ ADD
 SUB
 MUL
 DIV
+
+# TODO - add expression evaluating & minimizing (convert to NANDS using DeMorgans for least possible transistors)
