@@ -44,11 +44,15 @@ def main():
 
     # since NOT only takes one parameter, we only prompt once
     inputs = []
-    if op == "NOT":
-        inputs.append(int(input("Input a bit: "), 2))
-    else:
-        inputs.append(int(input("Input a bit: "), 2))
-        inputs.append(int(input("Input a bit: "), 2))
+    try:
+        if op == "NOT":
+            inputs.append(int(input("Input a binary value: "), 2))
+        else:
+            inputs.append(int(input("Input a binary value: "), 2))
+            inputs.append(int(input("Input a binary value: "), 2))
+    except:
+        print("Did you provide binary values?")
+        return 0
 
     func = getattr(operations, op) # since operations.py contains raw-functions, and not a dictionary of them, we have to access it like this
     result = None # func(*inputs)
@@ -56,7 +60,7 @@ def main():
     try:
         result = func(*inputs)
     except:
-        raise Exception("Something went wrong. Did you provide the correct number of arguments? If so, the issue may lie with the operator function itself.")
+        raise Exception("Did you provide the correct number of arguments? If so, the issue may lie with the operator function itself.")
     else:        
         expression = binWithoutPrefix(inputs[0]) # initialize the expression with the first input, so it doesn't have whitespace in the start
         for i in inputs[1:]: # skip the first index since the expression is initialized with it

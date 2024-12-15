@@ -1,4 +1,3 @@
-# TODO: Add the other operators
 def AND(a, b):
     return a & b
 
@@ -19,3 +18,5 @@ def XNOR(a, b):
 
 def NOT(a):
     return 1 - a
+
+# Implement ADD, SUB, DIV, MUL
